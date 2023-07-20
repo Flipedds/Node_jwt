@@ -1,17 +1,10 @@
 require('dotenv').config();
-const mongoose = require('mongoose');
+const Mongo = require('./Connection');
 
 // Credencials
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASS;
 
-const Connection = mongoose
-.connect(
-    `mongodb+srv://${dbUser}:${dbPassword}@cluster0.6emua71.mongodb.net/?retryWrites=true&w=majority`
-    )
-.then(() => {
-console.log("conectou ao banco!");
-})
-.catch((err) => console.log(err));
+const Connection = new Mongo(dbUser, dbPassword).connect();
 
 module.exports = Connection;

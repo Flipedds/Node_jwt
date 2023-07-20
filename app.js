@@ -1,10 +1,9 @@
 require('dotenv').config();
 const express = require('express');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const Auth = require('./Controllers/Auth');
 const Register = require('./Controllers/Resgister');
 const GetUserById = require('./Controllers/GetUserById');
+const connection = require('./models/Database');
 
 const app = express();
 
@@ -19,7 +18,5 @@ app.get('/', (req, res) =>{
 app.use('/user', GetUserById);
 app.use('/auth/register', Register);
 app.use('/auth/login', Auth);
-
-const connection = require('./models/Database');
 
 app.listen(3000);

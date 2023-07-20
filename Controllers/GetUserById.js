@@ -7,7 +7,6 @@ const checkToken = require('../Middlewares/checkToken');
 // Private rote
 router.get('/:id', checkToken, async (req, res) => {
     const id = req.params.id;
-    console.log(id);
     // consulta sem a senha
     const user = await User.findById(id, '-password');
 
