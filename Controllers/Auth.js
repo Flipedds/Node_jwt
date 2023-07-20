@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 // Auth user
 router.post("/", async (req, res) =>{
@@ -17,7 +18,7 @@ router.post("/", async (req, res) =>{
     }
 
     // check if user exists
-    const user = await User.findOne({email: email })
+    const user = await User.findOne({email: email });
 
     if(!user){
         return res.status(404).json({msg: "Usuário não encontrado!"})
@@ -31,7 +32,7 @@ router.post("/", async (req, res) =>{
     }
 
     try {
-        const secret = process.env.secret
+        const secret = process.env.SECRET;
         const token = jwt.sign(
             {
             id: user._id,
