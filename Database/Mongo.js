@@ -1,5 +1,5 @@
 require('dotenv').config();
-const Mongo = require('./Connection');
+const Mongo = require('../models/Connection');
 
 // Credencials
 const dbUser = process.env.DB_USER;

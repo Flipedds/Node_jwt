@@ -3,7 +3,7 @@ const express = require('express');
 const Auth = require('./Routes/Auth');
 const Register = require('./Routes/Resgister');
 const GetUserById = require('./Routes/GetUserById');
-const connection = require('./models/Database');
+const Database = require('./Database/Mongo');
 
 const app = express();
 
