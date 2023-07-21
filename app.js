@@ -1,8 +1,8 @@
 require('dotenv').config();
 const express = require('express');
-const Auth = require('./Controllers/Auth');
-const Register = require('./Controllers/Resgister');
-const GetUserById = require('./Controllers/GetUserById');
+const Auth = require('./Routes/Auth');
+const Register = require('./Routes/Resgister');
+const GetUserById = require('./Routes/GetUserById');
 const connection = require('./models/Database');
 
 const app = express();
