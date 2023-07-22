@@ -7,8 +7,8 @@ class Mongo {
         this.dbPassword = dbPassword;
     }
 
-    connect() {
-    mongoose.connect(
+    async connect() {
+    await mongoose.connect(
     `mongodb+srv://${this.dbUser}:${this.dbPassword}@cluster0.6emua71.mongodb.net/?retryWrites=true&w=majority`
     )
     .then(() => {
