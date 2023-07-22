@@ -1,22 +1,29 @@
-require('dotenv').config();
 const express = require('express');
 const Auth = require('./Routes/Auth');
 const Register = require('./Routes/Resgister');
 const GetUserById = require('./Routes/GetUserById');
 const Database = require('./Database/Mongo');
 
-const app = express();
+class App {
+  constructor() {
+    this.app = express();
+    this.middlewares();
+    this.routes();
+    this.app.listen(3000);
+  }
 
-// Config JSON response
-app.use(express.json());
+  middlewares() {
+    this.app.use(express.json());
+  }
 
-// Public route
-app.get('/', (req, res) =>{
-    res.status(200).json({msg: "Bem vindo a nossa api"});
-});
+  routes() {
+    this.app.get('/', (req, res) =>{
+        res.status(200).json({msg: "Bem vindo a nossa api"});
+    });
+    this.app.use('/user', GetUserById);
+    this.app.use('/auth/register', Register);
+    this.app.use('/auth/login', Auth);
+  }
+}
 
-app.use('/user', GetUserById);
-app.use('/auth/register', Register);
-app.use('/auth/login', Auth);
-
-app.listen(3000);
+new App();
